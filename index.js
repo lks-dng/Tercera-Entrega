@@ -85,5 +85,6 @@ botonesAgregar.forEach(boton=> {
 
 const botonFinalizar = document.querySelector('#finalizar')
 botonFinalizar.onclick = () => {
-
+    const totalCompra = carrito.map(prod=>prod.price*prod.cantidad)
+    console.log(totalCompra)
 }
