@@ -63,7 +63,7 @@ const botonesAgregar = document.querySelectorAll('.btn-primary')
 
 botonesAgregar.forEach(boton=> {
     boton.onclick = () => {
-        const producto = productsArray.find(prod=>prod.id===parseInt(boton.id))
+        const producto = productsArray.find(prod=>prod.ID===parseInt(boton.id))
         const productoCarrito = {
             id: producto.id,
             name: producto.Name,
@@ -72,12 +72,18 @@ botonesAgregar.forEach(boton=> {
         }
 
 
-        const indexCarrito = carrito.findIndex(prod=>prod.id === producto.ID)
+        const indexCarrito = carrito.findIndex(prod=>prod.id === producto.id)
         if(indexCarrito === -1){
             carrito.push(productoCarrito)
         }else{
-            carrito(indexCarrito).cantidad += 1
+            carrito[indexCarrito].cantidad += 1
         }
-        console.log(carrito)
     }
 })
+
+// Finalizar la compra
+
+const botonFinalizar = document.querySelector('#finalizar')
+botonFinalizar.onclick = () => {
+
+}
