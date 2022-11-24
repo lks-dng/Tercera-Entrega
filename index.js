@@ -67,7 +67,7 @@ botonesAgregar.forEach(boton=> {
         const productoCarrito = {
             id: producto.id,
             name: producto.Name,
-            price: producto.price,
+            price: producto.Price,
             cantidad: 1
         }
 
@@ -76,15 +76,22 @@ botonesAgregar.forEach(boton=> {
         if(indexCarrito === -1){
             carrito.push(productoCarrito)
         }else{
-            carrito[indexCarrito].cantidad += 1
+            carrito[indexCarrito].cantidad =  carrito[indexCarrito].cantidad + 1
         }
+        console.log(carrito)
     }
 })
+
+
 
 // Finalizar la compra
 
 const botonFinalizar = document.querySelector('#finalizar')
 botonFinalizar.onclick = () => {
-    const totalCompra = carrito.map(prod=>prod.price*prod.cantidad)
-    console.log(totalCompra)
+    const totalCompra = carrito.map(prod=>prod.price*prod.cantidad).reduce((elem1,elem2)=>elem1+elem2)
+    if(totalCompra >= 6000){
+        alert(`El total de tu compra es: ${totalCompra}. ¡El envío es gratis!`) 
+    }else{
+        alert(`El total de tu compra es: ${totalCompra}. El envío tiene un costo de: $360`)
+    }
 }
